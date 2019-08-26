@@ -1,20 +1,26 @@
 package Application;
 
-
 import java.io.FileInputStream;
 
 import javafx.application.Application;
 import javafx.geometry.Orientation;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Separator;
 import javafx.scene.control.SplitMenuButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application{
@@ -83,6 +89,9 @@ public class Main extends Application{
 		Button button4 = new Button("Help", imageViewHELP);
         CheckBox chkSound = new CheckBox("Sound");
         CheckBox chkMusic = new CheckBox("Music");
+        RadioButton rdoEasy = new RadioButton("Easy");
+        RadioButton rdoMedium = new RadioButton("Medium");
+        RadioButton rdoHard = new RadioButton("Hard");
         
         
         
@@ -94,7 +103,13 @@ public class Main extends Application{
         Button XORButton = new Button("XOR");
         Button XNORButton = new Button("XNOR");
         
- 
+                
+        ToggleGroup groupDifficulty = new ToggleGroup();
+        groupDifficulty.getToggles().addAll(
+                rdoEasy,
+                rdoMedium,
+                rdoHard
+            );
         ToolBar toolBar1 = new ToolBar();
         toolBar1.getItems().addAll(new Separator(),splitMenuButton,button,button2,button3,button4,new Separator(),chkSound,chkMusic,new Separator());          
         ToolBar toolBar2 = new ToolBar();
