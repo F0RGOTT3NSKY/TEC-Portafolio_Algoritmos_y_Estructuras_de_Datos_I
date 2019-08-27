@@ -45,9 +45,21 @@ public class Main extends Application{
         Image imageNAND = new Image(inputNAND);       
         ImageView imageViewNAND = new ImageView(imageNAND);
         
+        FileInputStream inputNOR = new FileInputStream("resources/images/NORimage.png");
+        Image imageNOR = new Image(inputNOR);       
+        ImageView imageViewNOR = new ImageView(imageNOR);
+        
         FileInputStream inputNOT = new FileInputStream("resources/images/NOTimage.png");
         Image imageNOT = new Image(inputNOT);       
         ImageView imageViewNOT = new ImageView(imageNOT);
+        
+        FileInputStream inputEXOR = new FileInputStream("resources/images/EXORimage.png");
+        Image imageEXOR = new Image(inputEXOR);       
+        ImageView imageViewEXOR = new ImageView(imageEXOR);
+        
+        FileInputStream inputEXNOR = new FileInputStream("resources/images/EXNORimage.png");
+        Image imageEXNOR = new Image(inputEXNOR);       
+        ImageView imageViewEXNOR = new ImageView(imageEXNOR);
         
         FileInputStream InputSave = new FileInputStream("resources/images/Saveimage.png");
         Image imageSave = new Image(InputSave);
@@ -95,13 +107,29 @@ public class Main extends Application{
         
         
         
-        Button ANDButton = new Button(" AND", imageViewAND);
-        Button ORButton = new Button("  OR  ", imageViewOR);
+        Button ANDButton = new Button("AND", imageViewAND);
+        Button ORButton = new Button("OR", imageViewOR);
         Button NANDButton = new Button("NAND", imageViewNAND);
-        Button NORButton = new Button("NOR");
+        Button NORButton = new Button("NOR", imageViewNOR);
         Button NOTButton = new Button("NOT", imageViewNOT);
-        Button XORButton = new Button("XOR");
-        Button XNORButton = new Button("XNOR");
+        Button XORButton = new Button("XOR", imageViewEXOR);
+        Button XNORButton = new Button("XNOR", imageViewEXNOR);
+        
+        
+        ANDButton.setMinWidth(150);
+        ORButton.setMinWidth(150);
+        NANDButton.setMinWidth(150);
+        NORButton.setMinWidth(150);
+        NOTButton.setMinWidth(150);
+        XORButton.setMinWidth(150);
+        XNORButton.setMinWidth(150);
+        ANDButton.setMaxWidth(150);
+        ORButton.setMaxWidth(150);
+        NANDButton.setMaxWidth(150);
+        NORButton.setMaxWidth(150);
+        NOTButton.setMaxWidth(150);
+        XORButton.setMaxWidth(150);
+        XNORButton.setMaxWidth(150);
         
                 
         ToggleGroup groupDifficulty = new ToggleGroup();
@@ -118,7 +146,7 @@ public class Main extends Application{
         BorderPane pane = new BorderPane();
         pane.setTop(toolBar1);
         pane.setLeft(toolBar2);
-        Scene scene = new Scene(pane, 1200, 800);
+        Scene scene = new Scene(pane, 1500, 900);
         String FileName = "Nuevo Archivo";
         primaryStage.setScene(scene);
         primaryStage.setTitle("Compuertas Logicas"+" - "+FileName);
