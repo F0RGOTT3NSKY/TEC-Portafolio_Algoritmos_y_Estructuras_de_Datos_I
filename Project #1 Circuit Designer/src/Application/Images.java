@@ -8,7 +8,18 @@ import javafx.scene.image.ImageView;
 
 public class Images {
 	private ImageView ImageView;
+	private Image Image;
 	
+	public Image getImage() {
+		return Image;
+	}
+	public void setImage(Images image, ImageType Type) throws FileNotFoundException {
+		if(Type == ImageType.Icon) {
+			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/ICONimage.png");
+			Image imagenN = new Image(inputFileN);       
+			this.Image = imagenN;
+		}
+	}
 	public ImageView getImageView() {
 		return ImageView;
 	}
@@ -61,11 +72,6 @@ public class Images {
 			this.ImageView = imageViewN;
 		}else if(Type == ImageType.Help) {
 			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/HELPimage.png");
-			Image imagenN = new Image(inputFileN);       
-			ImageView imageViewN = new ImageView(imagenN);
-			this.ImageView = imageViewN;
-		}else if(Type == ImageType.Icon) {
-			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/ICONimage.png");
 			Image imagenN = new Image(inputFileN);       
 			ImageView imageViewN = new ImageView(imagenN);
 			this.ImageView = imageViewN;

@@ -79,7 +79,7 @@ public class Main extends Application{
         Images ImageHELP = new Images();
         ImageHELP.setImageView(ImageHELP,ImageType.Help);
         Images ImageICON = new Images();
-        ImageICON.setImageView(ImageICON,ImageType.Icon);
+        ImageICON.setImage(ImageICON,ImageType.Icon);
         Images ImageNAND = new Images();
         ImageNAND.setImageView(ImageNAND,ImageType.Nand);
         Images ImageNOR = new Images();
@@ -131,7 +131,7 @@ public class Main extends Application{
         String FileName = "Nuevo Archivo";
         primaryStage.setScene(scene);
         primaryStage.setTitle("Compuertas Logicas"+" - "+FileName);
-        //primaryStage.getIcons().add(new Image("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/ICONimage.png")); 
+        primaryStage.getIcons().add(ImageICON.getImage());
         primaryStage.show();
 	}
 	
