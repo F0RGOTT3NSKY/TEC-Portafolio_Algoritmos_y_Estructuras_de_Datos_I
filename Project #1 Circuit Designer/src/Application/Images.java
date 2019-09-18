@@ -6,6 +6,11 @@ import java.io.FileNotFoundException;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * 
+ * @author ADRIAN
+ *
+ */
 public class Images {
 	private ImageView ImageView;
 	private Image Image;
@@ -16,6 +21,34 @@ public class Images {
 	public void setImage(Images image, ImageType Type) throws FileNotFoundException {
 		if(Type == ImageType.Icon) {
 			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/ICONimage.png");
+			Image imagenN = new Image(inputFileN);       
+			this.Image = imagenN;
+		}else if(Type == ImageType.And) {
+			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/ANDimage.png");
+			Image imagenN = new Image(inputFileN);       
+			this.Image = imagenN;
+		}else if(Type == ImageType.Exnor) {
+			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/EXNORimage.png");
+			Image imagenN = new Image(inputFileN);       
+			this.Image = imagenN;
+		}else if(Type == ImageType.Exor) {
+			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/EXORimage.png");
+			Image imagenN = new Image(inputFileN);       
+			this.Image = imagenN;
+		}else if(Type == ImageType.Nand) {
+			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/NANDimage.png");
+			Image imagenN = new Image(inputFileN);       
+			this.Image = imagenN;
+		}else if(Type == ImageType.Nor) {
+			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/NORimage.png");
+			Image imagenN = new Image(inputFileN);       
+			this.Image = imagenN;
+		}else if(Type == ImageType.Not) {
+			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/NOTimage.png");
+			Image imagenN = new Image(inputFileN);       
+			this.Image = imagenN;
+		}else if(Type == ImageType.Or) {
+			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/ORimage.png");
 			Image imagenN = new Image(inputFileN);       
 			this.Image = imagenN;
 		}
@@ -112,7 +145,5 @@ public class Images {
 			this.ImageView = imageViewN;
 		}
 	}
-	public enum ImageType{
-		About,Add,And,Clear,Delete,ExitSave,Exnor,Exor,File,Help,Icon,Nand,Nor,Not,Or,Run,Save,Wiki
-	}
+	
 }

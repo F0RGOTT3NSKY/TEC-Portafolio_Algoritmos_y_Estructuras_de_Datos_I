@@ -1,6 +1,5 @@
 package Application;
 
-import Application.Images.ImageType;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -15,7 +14,6 @@ public class Buttons {
 	}
 	
 	public void setMenuButton(Buttons menuButton, MenuButtonType Type) {
-		Images MenuButtonImagen = new Images();
 		MenuButton MenuButtonN = new MenuButton();
 		if(Type == MenuButtonType.File){
 			MenuButtonN.setText("File");
@@ -28,7 +26,6 @@ public class Buttons {
 	}
 	public void setMenuButton(Buttons menuButton, MenuButtonType Type, 
 							  Buttons menuItem, MenuItemType Type2) {
-		Images MenuButtonImagen = new Images();
 		MenuButton MenuButtonN = new MenuButton();
 		if(Type == MenuButtonType.File){
 			MenuButtonN.setText("File");
@@ -37,7 +34,6 @@ public class Buttons {
 		}else {
 			MenuButtonN.setText("Default");
 		}
-		Images MenuItemImagen = new Images();
 		MenuItem MenuItemN = new MenuItem();
 		if(Type2 == MenuItemType.choice1) {
 			MenuItemN.setText("Open Project");		
@@ -254,13 +250,4 @@ public class Buttons {
 		this.button = buttonN;
 	}
 
-	enum ButtonType{
-		And,Clear,Delete,Exnor,Exor,Nand,Nor,Not,Or,Run	
-	}
-	enum MenuButtonType{
-		File,Help
-	}
-	enum MenuItemType{
-		choice1,choice2,choice3,about,wiki
-	}
 }

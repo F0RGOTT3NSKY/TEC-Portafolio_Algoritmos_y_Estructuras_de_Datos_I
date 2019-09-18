@@ -1,31 +1,15 @@
 package Application;
 
-import java.io.FileInputStream;
-
 import javafx.application.Application;
 import javafx.geometry.Orientation;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.Separator;
-import javafx.scene.control.SplitMenuButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ToolBar;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import Application.Buttons.*;
-import Application.Images.ImageType;
+
 /**
- * 
+ *Clase de la ventana principal 
  */
 public class Main extends Application{
 	/**
