@@ -58,11 +58,6 @@ public class Events {
                     orgTranslateY = ((Rectangle)(t.getSource())).getTranslateY();
                 }
             };
-
-	public static void DragDetected(MouseEvent event, ImageView imageView, ButtonType type) {
-		// TODO Auto-generated method stub
-		
-	}
-		}
+}
 
 
