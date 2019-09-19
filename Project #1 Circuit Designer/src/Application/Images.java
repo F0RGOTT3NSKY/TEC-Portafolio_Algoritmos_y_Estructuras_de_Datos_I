@@ -18,7 +18,7 @@ public class Images {
 	public Image getImage() {
 		return Image;
 	}
-	public void setImage(Images image, ImageType Type) throws FileNotFoundException {
+	public void setImage(Images Image, ImageType Type) throws FileNotFoundException {
 		if(Type == ImageType.Icon) {
 			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/ICONimage.png");
 			Image imagenN = new Image(inputFileN);       

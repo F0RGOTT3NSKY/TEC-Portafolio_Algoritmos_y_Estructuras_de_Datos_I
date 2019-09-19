@@ -1,9 +1,14 @@
 package Application;
 
+import java.io.FileNotFoundException;
+
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseEvent;
 
 public class Buttons {
 	private Button button;
@@ -215,7 +220,6 @@ public class Buttons {
 						  ImageView ImageView) {
 		Button buttonN = new Button();
 		if(Type == ButtonType.And){
-			buttonN.setText("And");
 			buttonN.setGraphic(ImageView);
 		}else if(Type == ButtonType.Clear){
 			buttonN.setText("Clear");
@@ -224,22 +228,16 @@ public class Buttons {
 			buttonN.setText("Delete");
 			buttonN.setGraphic(ImageView);
 		}else if(Type == ButtonType.Exnor){
-			buttonN.setText("Exnor");
 			buttonN.setGraphic(ImageView);
 		}else if(Type == ButtonType.Exor){
-			buttonN.setText("Exor");
 			buttonN.setGraphic(ImageView);
 		}else if(Type == ButtonType.Nand){
-			buttonN.setText("Nand");
 			buttonN.setGraphic(ImageView);
 		}else if(Type == ButtonType.Nor){
-			buttonN.setText("Nor");
 			buttonN.setGraphic(ImageView);
 		}else if(Type == ButtonType.Not){
-			buttonN.setText("Not");
 			buttonN.setGraphic(ImageView);
 		}else if(Type == ButtonType.Or){
-			buttonN.setText("Or");
 			buttonN.setGraphic(ImageView);
 		}else if(Type == ButtonType.Run){
 			buttonN.setText("Run");
@@ -247,7 +245,19 @@ public class Buttons {
 		}else {
 			buttonN.setText("Default");
 		}
+		buttonN.setOnDragDetected(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+            	Images Image = new Images();
+            	Image.setImage(Image, Type);
+                Events.DragDetected(event,ImageView,Image.getImage());
+            }});
 		this.button = buttonN;
+	}
+
+	public void setText(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

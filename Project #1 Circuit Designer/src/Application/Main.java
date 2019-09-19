@@ -1,17 +1,29 @@
 package Application;
 
+
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToolBar;
+import javafx.scene.image.Image;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
  *Clase de la ventana principal 
  */
 public class Main extends Application{
+	public static final Group Group = new Group();
+	public static final Pane Pane = new Pane(Group);
 	/**
 	 * 
 	 */
@@ -62,8 +74,6 @@ public class Main extends Application{
         ImageFILE.setImageView(ImageFILE,ImageType.File);
         Images ImageHELP = new Images();
         ImageHELP.setImageView(ImageHELP,ImageType.Help);
-        Images ImageICON = new Images();
-        ImageICON.setImage(ImageICON,ImageType.Icon);
         Images ImageNAND = new Images();
         ImageNAND.setImageView(ImageNAND,ImageType.Nand);
         Images ImageNOR = new Images();
@@ -77,7 +87,9 @@ public class Main extends Application{
         Images ImageSAVE = new Images();
         ImageSAVE.setImageView(ImageSAVE,ImageType.Save);
         Images ImageWIKI = new Images();
-        ImageWIKI.setImageView(ImageWIKI,ImageType.Wiki);
+        ImageWIKI.setImageView(ImageWIKI,ImageType.Wiki);       
+        Images ImageICON = new Images();
+        ImageICON.setImage(ImageICON,ImageType.Icon);
         
         
         MenuButtonFile.setMenuButton(MenuButtonFile,MenuButtonType.File,ImageFILE.getImageView(),
@@ -106,9 +118,25 @@ public class Main extends Application{
         ToolBar toolBar2 = new ToolBar();
         toolBar2.setOrientation(Orientation.VERTICAL);
         toolBar2.getItems().addAll(new Separator(),ANDButton.getButton(),ORButton.getButton(),NANDButton.getButton(),NORButton.getButton(),NOTButton.getButton(),XORButton.getButton(),XNORButton.getButton(),new Separator());
+      
+        
+        Pane.setOnDragOver(new EventHandler<DragEvent>() {
+            @Override
+            public void handle(DragEvent event) {
+                event.acceptTransferModes(TransferMode.COPY_OR_MOVE); }
+        });
+        Pane.setOnDragDropped(new EventHandler<DragEvent>() {
+            @Override
+            public void handle(DragEvent event) {
+                Events.OnDragDropped(event, ImageAND.getImageView());
+            }
+        });
+        
+        
         BorderPane pane = new BorderPane();
         pane.setTop(toolBar1);
         pane.setLeft(toolBar2);
+        pane.setCenter(Pane);
         
         
         Scene scene = new Scene(pane, 1000, 600);
