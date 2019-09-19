@@ -2,6 +2,7 @@ package Application;
 
 import java.io.FileNotFoundException;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
@@ -224,6 +225,12 @@ public class Buttons {
 		}else if(Type == ButtonType.Clear){
 			buttonN.setText("Clear");
 			buttonN.setGraphic(ImageView);
+			buttonN.setOnAction(new EventHandler<ActionEvent>(){
+	             @Override
+	             public void handle(ActionEvent event) {
+	                 Main.Group.getChildren().clear();
+	             }
+	         });
 		}else if(Type == ButtonType.Delete){
 			buttonN.setText("Delete");
 			buttonN.setGraphic(ImageView);
@@ -248,9 +255,7 @@ public class Buttons {
 		buttonN.setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	Images Image = new Images();
-            	Image.setImage(Image, Type);
-                Events.DragDetected(event,ImageView,Image.getImage());
+                Events.DragDetected(event,ImageView,"AND");
             }});
 		this.button = buttonN;
 	}

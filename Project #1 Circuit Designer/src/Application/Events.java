@@ -20,10 +20,10 @@ public class Events {
 	private static double orgSceneX,orgSceneY;
     private static double orgTranslateX,orgTranslateY;
 
-	public static final void DragDetected(MouseEvent e, ImageView ImageView, Image Image){
+	public static final void DragDetected(MouseEvent e, ImageView ImageView, String Name){
         Dragboard db= ImageView.startDragAndDrop(TransferMode.ANY);
         ClipboardContent content = new ClipboardContent();
-        content.putImage(Image);
+        content.putString(Name);
         db.setContent(content);
         e.consume();
     }
