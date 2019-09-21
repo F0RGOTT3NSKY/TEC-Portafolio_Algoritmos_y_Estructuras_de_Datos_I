@@ -15,20 +15,21 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- *Clase de la ventana principal 
+ *Clase de la ventana principal de la applicacion
  */
 public class Main extends Application{
 	public static final Group Group = new Group();
 	public static final Pane Pane = new Pane(Group);
 	/**
-	 * 
+	 * Metodo que ejecuta argumentos
 	 */
     public static void main(String[] args) {    	
         launch(args);
     }
 
     /**
-	 * 
+	 * Metodo para iniciar la ventana principal
+	 * @param primaryStage
 	 */
 	public void start(Stage primaryStage) throws Exception {
 		

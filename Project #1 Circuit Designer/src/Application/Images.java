@@ -62,8 +62,8 @@ public class Images {
 		}
 	}
 	/**
-	 * Metodo para obtener una ImageView
-	 * @return
+	 * Metodo para obtener una ImageView ya establecida
+	 * @return ImageView
 	 */
 	public ImageView getImageView() {
 		return ImageView;
