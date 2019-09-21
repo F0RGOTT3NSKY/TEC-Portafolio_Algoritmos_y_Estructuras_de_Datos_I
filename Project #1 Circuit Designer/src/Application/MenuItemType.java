@@ -1,9 +1,6 @@
 package Application;
-
 /**
- * 
- * @author ADRIAN
- *
+ * Enum para delimitar el tipo de MenuItem
  */
 public enum MenuItemType {
 	choice1,choice2,choice3,about,wiki

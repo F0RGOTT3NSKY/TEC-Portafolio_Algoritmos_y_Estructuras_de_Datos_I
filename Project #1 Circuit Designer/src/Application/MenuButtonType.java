@@ -1,9 +1,6 @@
 package Application;
-
 /**
- * 
- * @author ADRIAN
- *
+ * Enum para delimitar el tipo de MenuButtons
  */
 public enum MenuButtonType {
 	File,Help

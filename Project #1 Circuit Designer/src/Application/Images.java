@@ -7,17 +7,25 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
- * 
- * @author ADRIAN
- *
+ * Clase para establecer y obtener las imagenes
  */
 public class Images {
 	private ImageView ImageView;
 	private Image Image;
 	
+	/**
+	 * Metodo para obtener una Image ya establecida
+	 * @return Image
+	 */
 	public Image getImage() {
 		return Image;
 	}
+	/**
+	 * Metodo para establecer una Image 
+	 * @param Image
+	 * @param Type
+	 * @throws FileNotFoundException
+	 */
 	public void setImage(Images Image, ImageType Type) throws FileNotFoundException {
 		if(Type == ImageType.Icon) {
 			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/ICONimage.png");
@@ -53,10 +61,19 @@ public class Images {
 			this.Image = imagenN;
 		}
 	}
+	/**
+	 * Metodo para obtener una ImageView
+	 * @return
+	 */
 	public ImageView getImageView() {
 		return ImageView;
 	}
-
+	/**
+	 * Metodo para establecer una ImageView
+	 * @param ImageView
+	 * @param Type
+	 * @throws FileNotFoundException
+	 */
 	public void setImageView(Images ImageView, ImageType Type) throws FileNotFoundException {
 		if(Type == ImageType.About) {
 			FileInputStream inputFileN = new FileInputStream("C://Users//ADRIAN/Documents/GitHub/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/Project #1 Circuit Designer/src/Images/ABOUTimage.png");

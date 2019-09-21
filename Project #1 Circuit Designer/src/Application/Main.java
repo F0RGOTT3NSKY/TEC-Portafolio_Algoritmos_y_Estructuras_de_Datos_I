@@ -128,7 +128,6 @@ public class Main extends Application{
             }
         });
         
-        
         BorderPane pane = new BorderPane();
         pane.setTop(toolBar1);
         pane.setLeft(toolBar2);

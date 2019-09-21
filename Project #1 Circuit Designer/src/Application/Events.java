@@ -12,13 +12,18 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 /**
- * @author ADRIAN
+ * Clase usada para organizar los eventos 
  */
 public class Events {
 	private static Rectangle rectangle;
 	private static double orgSceneX,orgSceneY;
     private static double orgTranslateX,orgTranslateY;
-
+    /**
+     * Metodo para cuando se detecta que un boton esta siendo arrastrado
+     * @param e
+     * @param ImageView
+     * @param Name
+     */
 	public static final void DragDetected(MouseEvent e, ImageView ImageView, String Name){
         Dragboard db= ImageView.startDragAndDrop(TransferMode.ANY);
         ClipboardContent content = new ClipboardContent();
@@ -26,6 +31,9 @@ public class Events {
         db.setContent(content);
         e.consume();
     }
+	/**
+	 * Evento para establecer la compuerta en el panel despues de ser movida
+	 */
 	private static EventHandler<MouseEvent> RectangleOnMouseDraggedEventHandler = new EventHandler<MouseEvent>() {
 	    @Override
 	    public void handle(MouseEvent t) {
@@ -38,9 +46,14 @@ public class Events {
 	        ((Rectangle)(t.getSource())).setTranslateY(newTranslateY);
 	    }
 	};
-	public static void OnDragDropped(DragEvent e,ImageView i){
+	/**
+	 * Metodo para agregar las compuertas al panel 
+	 * @param e
+	 * @param ImageView
+	 */
+	public static void OnDragDropped(DragEvent e,ImageView ImageView){
 	       rectangle=new Rectangle(140,50);
-	       rectangle.setFill(new ImagePattern(i.getImage()));
+	       rectangle.setFill(new ImagePattern(ImageView.getImage()));
 	       rectangle.setCursor(Cursor.MOVE);
 	       rectangle.setX(e.getSceneX());
 	       rectangle.setY(e.getSceneY());
@@ -49,6 +62,9 @@ public class Events {
 
 	       Main.Group.getChildren().add(rectangle);
 	    }
+	/**
+	 * Evento para mover una compuerta en el panel 
+	 */
 	private static EventHandler<MouseEvent> RectangleOnMousePressedEventHandler = new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent t) {

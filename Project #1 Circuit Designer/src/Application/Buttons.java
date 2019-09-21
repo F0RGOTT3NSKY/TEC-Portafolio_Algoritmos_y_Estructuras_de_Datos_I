@@ -1,24 +1,32 @@
 package Application;
 
-import java.io.FileNotFoundException;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
-
+/**
+ * 
+ * Clase para la creacion de botones
+ *
+ */
 public class Buttons {
 	private Button button;
 	private MenuButton menuButton;
-	
+	/**
+	 * Metodo para obtener un MenuButton creado 
+	 * @return MenuButton
+	 */
 	public MenuButton getMenuButton() {
 		return menuButton;
 	}
-	
+	/**
+	 * Metodo para establecer un MenuButton
+	 * @param menuButton
+	 * @param Type
+	 */
 	public void setMenuButton(Buttons menuButton, MenuButtonType Type) {
 		MenuButton MenuButtonN = new MenuButton();
 		if(Type == MenuButtonType.File){
@@ -30,6 +38,13 @@ public class Buttons {
 		}
 		this.menuButton = MenuButtonN;
 	}
+	/**
+	 * Metodo para establecer un MenuButton con un MenuItem
+	 * @param menuButton
+	 * @param Type
+	 * @param menuItem
+	 * @param Type2
+	 */
 	public void setMenuButton(Buttons menuButton, MenuButtonType Type, 
 							  Buttons menuItem, MenuItemType Type2) {
 		MenuButton MenuButtonN = new MenuButton();
@@ -57,6 +72,18 @@ public class Buttons {
 		MenuButtonN.getItems().add(MenuItemN);
 		this.menuButton = MenuButtonN;
 	}
+	/**
+	 * Metodo para establecer un MenuButton con dos MenuItems
+	 * @param menuButton
+	 * @param Type
+	 * @param ImageView
+	 * @param menuItem
+	 * @param Type2
+	 * @param ImageView2
+	 * @param menuItem2
+	 * @param Type3
+	 * @param ImageView3
+	 */
 	public void setMenuButton(Buttons menuButton, MenuButtonType Type,ImageView ImageView, 
 						 	  Buttons menuItem, MenuItemType Type2,ImageView ImageView2, 
 						 	  Buttons menuItem2, MenuItemType Type3,ImageView ImageView3) {
@@ -111,6 +138,21 @@ public class Buttons {
 		MenuButtonN.getItems().addAll(MenuItemN,MenuItemN2);
 		this.menuButton = MenuButtonN;
 	}
+	/**
+	 * Metodo para establecer un MenuButton con tres MenuItems
+	 * @param menuButton
+	 * @param Type
+	 * @param ImageView
+	 * @param menuItem
+	 * @param Type2
+	 * @param ImageView2
+	 * @param menuItem2
+	 * @param Type3
+	 * @param ImageView3
+	 * @param menuItem3
+	 * @param Type4
+	 * @param ImageView4
+	 */
 	public void setMenuButton(Buttons menuButton, MenuButtonType Type,ImageView ImageView,
 							  Buttons menuItem, MenuItemType Type2,ImageView ImageView2, 
 							  Buttons menuItem2, MenuItemType Type3,ImageView ImageView3,
@@ -186,10 +228,18 @@ public class Buttons {
 		this.menuButton = MenuButtonN;
 	}
 
+	/**
+	 * Metodo para obtener un Button creado
+	 * @return Button
+	 */
 	public Button getButton() {
 		return button;
 	}
-
+	/**
+	 * Metodo para crear un Button
+	 * @param button
+	 * @param Type
+	 */
 	public void setButton(Buttons button, ButtonType Type) {
 		Button buttonN = new Button();
 		if(Type == ButtonType.And){
@@ -217,6 +267,12 @@ public class Buttons {
 		}
 		this.button = buttonN;
 	}
+	/**
+	 * Metodo para crear un Button con Image
+	 * @param button
+	 * @param Type
+	 * @param ImageView
+	 */
 	public void setButton(Buttons button, ButtonType Type,
 						  ImageView ImageView) {
 		Button buttonN = new Button();
@@ -260,9 +316,6 @@ public class Buttons {
 		this.button = buttonN;
 	}
 
-	public void setText(String string) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }
