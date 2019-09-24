@@ -1,6 +1,7 @@
 package Application;
 
 
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
@@ -8,7 +9,9 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToolBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -55,32 +58,12 @@ public class Main extends Application{
         ImageABOUT.setImageView(ImageABOUT,ImageType.About);
         Images ImageADD = new Images();
         ImageADD.setImageView(ImageADD,ImageType.Add);
-        Images ImageAND = new Images();
-        ImageAND.setImageView(ImageAND,ImageType.And);
-        Images ImageCLEAR = new Images();
-        ImageCLEAR.setImageView(ImageCLEAR,ImageType.Clear);
-        Images ImageDELETE = new Images();
-        ImageDELETE.setImageView(ImageDELETE,ImageType.Delete);
         Images ImageEXITSAVE = new Images();
-        ImageEXITSAVE.setImageView(ImageEXITSAVE,ImageType.ExitSave);
-        Images ImageEXNOR = new Images();
-        ImageEXNOR.setImageView(ImageEXNOR,ImageType.Exnor);
-        Images ImageEXOR = new Images();
-        ImageEXOR.setImageView(ImageEXOR,ImageType.Exor);
+        ImageEXITSAVE.setImageView(ImageEXITSAVE,ImageType.ExitSave);       
         Images ImageFILE = new Images();
         ImageFILE.setImageView(ImageFILE,ImageType.File);
         Images ImageHELP = new Images();
         ImageHELP.setImageView(ImageHELP,ImageType.Help);
-        Images ImageNAND = new Images();
-        ImageNAND.setImageView(ImageNAND,ImageType.Nand);
-        Images ImageNOR = new Images();
-        ImageNOR.setImageView(ImageNOR,ImageType.Nor);
-        Images ImageNOT = new Images();
-        ImageNOT.setImageView(ImageNOT,ImageType.Not);
-        Images ImageOR = new Images();
-        ImageOR.setImageView(ImageOR,ImageType.Or);
-        Images ImageRUN = new Images();
-        ImageRUN.setImageView(ImageRUN,ImageType.Run);
         Images ImageSAVE = new Images();
         ImageSAVE.setImageView(ImageSAVE,ImageType.Save);
         Images ImageWIKI = new Images();
@@ -93,19 +76,19 @@ public class Main extends Application{
         							 MenuItem1,MenuItemType.choice1,ImageADD.getImageView(),
         							 MenuItem2,MenuItemType.choice2,ImageSAVE.getImageView(),
         							 MenuItem3,MenuItemType.choice3,ImageEXITSAVE.getImageView());
-        boton.setButton(boton,ButtonType.Run,ImageRUN.getImageView());
-        button2.setButton(button2,ButtonType.Delete,ImageDELETE.getImageView());
-        button3.setButton(button3,ButtonType.Clear,ImageCLEAR.getImageView());
+        boton.setButton(boton,ButtonType.Run);
+        button2.setButton(button2,ButtonType.Delete);
+        button3.setButton(button3,ButtonType.Clear);
         MenuButtonHelp.setMenuButton(MenuButtonHelp,MenuButtonType.Help,ImageHELP.getImageView(),
         							 MenuItem4,MenuItemType.about,ImageABOUT.getImageView(),
         							 MenuItem5,MenuItemType.wiki,ImageWIKI.getImageView());
-        ANDButton.setButton(ANDButton, ButtonType.And,ImageAND.getImageView());
-        ORButton.setButton(ORButton, ButtonType.Or,ImageOR.getImageView());
-        NOTButton.setButton(NOTButton, ButtonType.Not,ImageNOT.getImageView());
-        NANDButton.setButton(NANDButton, ButtonType.Nand,ImageNAND.getImageView());
-        NORButton.setButton(NORButton, ButtonType.Nor,ImageNOR.getImageView());
-        XORButton.setButton(XORButton, ButtonType.Exor,ImageEXOR.getImageView());
-        XNORButton.setButton(XNORButton, ButtonType.Exnor,ImageEXNOR.getImageView());
+        ANDButton.setButton(ANDButton, ButtonType.And);
+        ORButton.setButton(ORButton, ButtonType.Or);
+        NOTButton.setButton(NOTButton, ButtonType.Not);
+        NANDButton.setButton(NANDButton, ButtonType.Nand);
+        NORButton.setButton(NORButton, ButtonType.Nor);
+        XORButton.setButton(XORButton, ButtonType.Exor);
+        XNORButton.setButton(XNORButton, ButtonType.Exnor);
         
         
         
@@ -115,7 +98,6 @@ public class Main extends Application{
         ToolBar toolBar2 = new ToolBar();
         toolBar2.setOrientation(Orientation.VERTICAL);
         toolBar2.getItems().addAll(new Separator(),ANDButton.getButton(),ORButton.getButton(),NANDButton.getButton(),NORButton.getButton(),NOTButton.getButton(),XORButton.getButton(),XNORButton.getButton(),new Separator());
-      
         
         Pane.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
@@ -125,10 +107,10 @@ public class Main extends Application{
         Pane.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {
-                Events.OnDragDropped(event, ImageAND.getImageView());
+            	Images Image = new Images();
+                Events.OnDragDropped(event, Image.getImageView());
             }
         });
-        
         BorderPane pane = new BorderPane();
         pane.setTop(toolBar1);
         pane.setLeft(toolBar2);

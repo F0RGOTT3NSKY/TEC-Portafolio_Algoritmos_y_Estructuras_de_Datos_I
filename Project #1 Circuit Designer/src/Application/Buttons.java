@@ -1,11 +1,14 @@
 package Application;
 
+import java.io.FileNotFoundException;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 /**
  * 
@@ -236,51 +239,28 @@ public class Buttons {
 		return button;
 	}
 	/**
-	 * Metodo para crear un Button
-	 * @param button
-	 * @param Type
-	 */
-	public void setButton(Buttons button, ButtonType Type) {
-		Button buttonN = new Button();
-		if(Type == ButtonType.And){
-			buttonN.setText("And");
-		}else if(Type == ButtonType.Clear){
-			buttonN.setText("Clear");
-		}else if(Type == ButtonType.Delete){
-			buttonN.setText("Delete");
-		}else if(Type == ButtonType.Exnor){
-			buttonN.setText("Exnor");
-		}else if(Type == ButtonType.Exor){
-			buttonN.setText("Exor");
-		}else if(Type == ButtonType.Nand){
-			buttonN.setText("Nand");
-		}else if(Type == ButtonType.Nor){
-			buttonN.setText("Nor");
-		}else if(Type == ButtonType.Not){
-			buttonN.setText("Not");
-		}else if(Type == ButtonType.Or){
-			buttonN.setText("Or");
-		}else if(Type == ButtonType.Run){
-			buttonN.setText("Run");
-		}else {
-			buttonN.setText("Default");
-		}
-		this.button = buttonN;
-	}
-	/**
 	 * Metodo para crear un Button con Image
 	 * @param button
 	 * @param Type
 	 * @param ImageView
+	 * @throws FileNotFoundException 
 	 */
-	public void setButton(Buttons button, ButtonType Type,
-						  ImageView ImageView) {
+	public void setButton(Buttons button, ButtonType Type) throws FileNotFoundException {
 		Button buttonN = new Button();
 		if(Type == ButtonType.And){
-			buttonN.setGraphic(ImageView);
+			Images ImageAND = new Images();
+	        ImageAND.setImageView(ImageAND,ImageType.And);
+			buttonN.setGraphic(ImageAND.getImageView());
+			buttonN.setOnDragDetected(new EventHandler<MouseEvent>() {
+	            @Override
+	            public void handle(MouseEvent event) {
+	                Events.DragDetected(event,ImageAND.getImageView(),"AND");
+	            }});
 		}else if(Type == ButtonType.Clear){
 			buttonN.setText("Clear");
-			buttonN.setGraphic(ImageView);
+			Images ImageCLEAR = new Images();
+	        ImageCLEAR.setImageView(ImageCLEAR,ImageType.Clear);
+			buttonN.setGraphic(ImageCLEAR.getImageView());
 			buttonN.setOnAction(new EventHandler<ActionEvent>(){
 	             @Override
 	             public void handle(ActionEvent event) {
@@ -289,30 +269,71 @@ public class Buttons {
 	         });
 		}else if(Type == ButtonType.Delete){
 			buttonN.setText("Delete");
-			buttonN.setGraphic(ImageView);
+			Images ImageDELETE = new Images();
+	        ImageDELETE.setImageView(ImageDELETE,ImageType.Delete);
+			buttonN.setGraphic(ImageDELETE.getImageView());
 		}else if(Type == ButtonType.Exnor){
-			buttonN.setGraphic(ImageView);
+			Images ImageEXNOR = new Images();
+	        ImageEXNOR.setImageView(ImageEXNOR,ImageType.Exnor);
+			buttonN.setGraphic(ImageEXNOR.getImageView());
+			buttonN.setOnDragDetected(new EventHandler<MouseEvent>() {
+	            @Override
+	            public void handle(MouseEvent event) {
+	                Events.DragDetected(event,ImageEXNOR.getImageView(),"XNOR");
+	            }});
 		}else if(Type == ButtonType.Exor){
-			buttonN.setGraphic(ImageView);
+			Images ImageEXOR = new Images();
+		    ImageEXOR.setImageView(ImageEXOR,ImageType.Exor);
+			buttonN.setGraphic(ImageEXOR.getImageView());
+			buttonN.setOnDragDetected(new EventHandler<MouseEvent>() {
+	            @Override
+	            public void handle(MouseEvent event) {
+	                Events.DragDetected(event,ImageEXOR.getImageView(),"XOR");
+	            }});
 		}else if(Type == ButtonType.Nand){
-			buttonN.setGraphic(ImageView);
+			Images ImageNAND = new Images();
+	        ImageNAND.setImageView(ImageNAND,ImageType.Nand);
+			buttonN.setGraphic(ImageNAND.getImageView());
+			buttonN.setOnDragDetected(new EventHandler<MouseEvent>() {
+	            @Override
+	            public void handle(MouseEvent event) {
+	                Events.DragDetected(event,ImageNAND.getImageView(),"NAND");
+	            }});
 		}else if(Type == ButtonType.Nor){
-			buttonN.setGraphic(ImageView);
+			Images ImageNOR = new Images();
+	        ImageNOR.setImageView(ImageNOR,ImageType.Nor);
+			buttonN.setGraphic(ImageNOR.getImageView());
+			buttonN.setOnDragDetected(new EventHandler<MouseEvent>() {
+	            @Override
+	            public void handle(MouseEvent event) {
+	                Events.DragDetected(event,ImageNOR.getImageView(),"NOR");
+	            }});
 		}else if(Type == ButtonType.Not){
-			buttonN.setGraphic(ImageView);
+			Images ImageNOT = new Images();
+	        ImageNOT.setImageView(ImageNOT,ImageType.Not);
+			buttonN.setGraphic(ImageNOT.getImageView());
+			buttonN.setOnDragDetected(new EventHandler<MouseEvent>() {
+	            @Override
+	            public void handle(MouseEvent event) {
+	                Events.DragDetected(event,ImageNOT.getImageView(),"NOT");
+	            }});
 		}else if(Type == ButtonType.Or){
-			buttonN.setGraphic(ImageView);
+			Images ImageOR = new Images();
+	        ImageOR.setImageView(ImageOR,ImageType.Or);
+			buttonN.setGraphic(ImageOR.getImageView());
+			buttonN.setOnDragDetected(new EventHandler<MouseEvent>() {
+	            @Override
+	            public void handle(MouseEvent event) {
+	                Events.DragDetected(event,ImageOR.getImageView(),"OR");
+	            }});
 		}else if(Type == ButtonType.Run){
+			Images ImageRUN = new Images();
+	        ImageRUN.setImageView(ImageRUN,ImageType.Run);
 			buttonN.setText("Run");
-			buttonN.setGraphic(ImageView);
+			buttonN.setGraphic(ImageRUN.getImageView());
 		}else {
 			buttonN.setText("Default");
 		}
-		buttonN.setOnDragDetected(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Events.DragDetected(event,ImageView,"AND");
-            }});
 		this.button = buttonN;
 	}
 
