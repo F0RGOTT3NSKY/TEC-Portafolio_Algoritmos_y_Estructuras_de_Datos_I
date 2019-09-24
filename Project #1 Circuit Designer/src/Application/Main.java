@@ -2,6 +2,8 @@ package Application;
 
 
 
+import java.io.FileNotFoundException;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
@@ -9,7 +11,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToolBar;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
@@ -104,13 +105,8 @@ public class Main extends Application{
             public void handle(DragEvent event) {
                 event.acceptTransferModes(TransferMode.COPY_OR_MOVE); }
         });
-        Pane.setOnDragDropped(new EventHandler<DragEvent>() {
-            @Override
-            public void handle(DragEvent event) {
-            	Images Image = new Images();
-                Events.OnDragDropped(event, Image.getImageView());
-            }
-        });
+        
+        
         BorderPane pane = new BorderPane();
         pane.setTop(toolBar1);
         pane.setLeft(toolBar2);

@@ -163,4 +163,8 @@ public class Images {
 		}
 	}
 	
+	public ImageView ImageViewGetter() {
+		
+		return ImageView;
+	}
 }

@@ -27,6 +27,12 @@ public class Events {
 	public static final void DragDetected(MouseEvent e, ImageView ImageView, String Name){
         Dragboard db= ImageView.startDragAndDrop(TransferMode.ANY);
         ClipboardContent content = new ClipboardContent();
+        Main.Pane.setOnDragDropped(new EventHandler<DragEvent>() {
+            @Override
+            public void handle(DragEvent event) {
+                Events.OnDragDropped(event, ImageView);
+            }
+        });
         content.putString(Name);
         db.setContent(content);
         e.consume();
