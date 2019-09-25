@@ -9,11 +9,16 @@ import java.net.URISyntaxException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 /**
  * 
  * Clase para la creacion de botones
@@ -363,6 +368,17 @@ public class Buttons {
 	        ImageRUN.setImageView(ImageRUN,ImageType.Run);
 			buttonN.setText("Run");
 			buttonN.setGraphic(ImageRUN.getImageView());
+			buttonN.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+			        Stage stage = new Stage();
+					Pane Panel = new Pane();
+					stage.setTitle("Work in Progress");
+					stage.setScene(new Scene(Panel, 450, 450));				
+					stage.initModality(Modality.APPLICATION_MODAL);
+					stage.showAndWait();
+				}
+			});
 		}else {
 			buttonN.setText("Default");
 		}

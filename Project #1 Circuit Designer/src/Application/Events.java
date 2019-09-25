@@ -69,6 +69,7 @@ public class Events {
 	       rectangle.setOnMouseDragged(RectangleOnMouseDraggedEventHandler);
 	       rectangle.setId(Name);
 	       Main.Group.getChildren().add(rectangle);
+	       
 	    }
 	/**
 	 * Evento para mover una compuerta en el panel 
