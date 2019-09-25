@@ -1,9 +1,14 @@
 package Application;
 
+import java.awt.Desktop;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -112,6 +117,18 @@ public class Buttons {
 		}else if(Type2 == MenuItemType.about) {
 			MenuItemN.setText("About");
 			MenuItemN.setGraphic(ImageView2);
+			MenuItemN.setOnAction(new EventHandler<ActionEvent>() {
+				   @Override public void handle(ActionEvent e) {
+				        try {
+				            Desktop.getDesktop().browse(new URI("https://github.com/SkyHunter2099/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/wiki/About-%7C-Proyecto-1"));
+				        } catch (IOException e1) {
+				            e1.printStackTrace();
+				        } catch (URISyntaxException e1) {
+				            e1.printStackTrace();
+				        }
+				        }
+				    }
+				);
 		}else if(Type2 == MenuItemType.wiki) {
 			MenuItemN.setText("Wiki");
 			MenuItemN.setGraphic(ImageView2);
@@ -134,6 +151,18 @@ public class Buttons {
 		}else if(Type3 == MenuItemType.wiki) {
 			MenuItemN2.setText("Wiki");
 			MenuItemN2.setGraphic(ImageView3);
+			MenuItemN2.setOnAction(new EventHandler<ActionEvent>() {
+				   @Override public void handle(ActionEvent e) {
+				        try {
+				            Desktop.getDesktop().browse(new URI("https://github.com/SkyHunter2099/TEC-Portafolio_Algoritmos_y_Estructuras_de_Datos_I/wiki"));
+				        } catch (IOException e1) {
+				            e1.printStackTrace();
+				        } catch (URISyntaxException e1) {
+				            e1.printStackTrace();
+				        }
+				        }
+				    }
+				);
 		}else {
 			MenuItemN2.setText("Default");
 		}
@@ -201,6 +230,8 @@ public class Buttons {
 		}else if(Type3 == MenuItemType.about) {
 			MenuItemN2.setText("About");
 			MenuItemN2.setGraphic(ImageView3);
+			MenuItemN.setText("About");
+			MenuItemN.setGraphic(ImageView2);
 		}else if(Type3 == MenuItemType.wiki) {
 			MenuItemN2.setText("Wiki");
 			MenuItemN2.setGraphic(ImageView3);
@@ -255,6 +286,7 @@ public class Buttons {
 	            public void handle(MouseEvent event) {
 	                Events.DragDetected(event,ImageAND.getImageView(),"AND");
 	            }});
+			
 		}else if(Type == ButtonType.Clear){
 			buttonN.setText("Clear");
 			Images ImageCLEAR = new Images();
@@ -266,6 +298,7 @@ public class Buttons {
 	                 Main.Group.getChildren().clear();
 	             }
 	         });
+			
 		}else if(Type == ButtonType.Delete){
 			buttonN.setText("Delete");
 			Images ImageDELETE = new Images();
@@ -333,6 +366,12 @@ public class Buttons {
 		}else {
 			buttonN.setText("Default");
 		}
+		buttonN.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+            	buttonN.setCursor(Cursor.HAND);
+            }
+        });
 		this.button = buttonN;
 	}
 
