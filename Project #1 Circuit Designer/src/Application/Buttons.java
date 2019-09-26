@@ -5,26 +5,23 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 /**
  * 
  * Clase para la creacion de botones
  *
  */
 public class Buttons {
+	private static int TotalEntradas = 0;
+	private static int Input1 = 0;
+	private static int Input2 = 0;
 	private Button button;
 	private MenuButton menuButton;
 	/**
@@ -51,19 +48,27 @@ public class Buttons {
 		this.menuButton = MenuButtonN;
 	}
 	/**
-	 * Metodo para establecer un MenuButton con un MenuItem
+	 * Metodo para establecer un MenuButton con dos MenuItems sin Imagenes y que tiene una variable Name que identifica cual compuerta esta siendo modificada
 	 * @param menuButton
 	 * @param Type
 	 * @param menuItem
 	 * @param Type2
+	 * @param menuItem2
+	 * @param Type3
+	 * @param Name
 	 */
 	public void setMenuButton(Buttons menuButton, MenuButtonType Type, 
-							  Buttons menuItem, MenuItemType Type2) {
+							  Buttons menuItem, MenuItemType Type2,
+							  Buttons menuItem2, MenuItemType Type3, String Name) {
+		// TODO SetMenuButton con dos MenuItems sin Imagenes
 		MenuButton MenuButtonN = new MenuButton();
 		if(Type == MenuButtonType.File){
 			MenuButtonN.setText("File");
 		}else if(Type == MenuButtonType.Help){
 			MenuButtonN.setText("Help");
+		}else if(Type == MenuButtonType.Input){
+			TotalEntradas++;
+			MenuButtonN.setText(Name+" Inputs "+TotalEntradas);
 		}else {
 			MenuButtonN.setText("Default");
 		}
@@ -78,10 +83,60 @@ public class Buttons {
 			MenuItemN.setText("About");;
 		}else if(Type2 == MenuItemType.wiki) {
 			MenuItemN.setText("Wiki");
+		}else if(Type2 == MenuItemType.Input1) {
+			MenuItemN.setText("setInput1 = "+Input1);
+			MenuItemN.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					if(Input1 == 0) {
+						Input1 = 1;
+						MenuItemN.setText("setInput1 = "+Input1);
+						Events.SetInputs(Input1, Input2, Name);
+					}else {
+						Input1 = 0;
+						MenuItemN.setText("setInput1 = "+Input1);
+						Events.SetInputs(Input1, Input2, Name);
+					}
+				}
+			});
 		}else {
 			MenuItemN.setText("Default");
 		}
-		MenuButtonN.getItems().add(MenuItemN);
+		MenuItem MenuItemN2 = new MenuItem();
+		if(Type3 == MenuItemType.choice1) {
+			MenuItemN2.setText("Open Project");		
+		}else if(Type3 == MenuItemType.choice2) {
+			MenuItemN2.setText("Save Project");
+		}else if(Type3 == MenuItemType.choice3) {
+			MenuItemN2.setText("Save and Exit");
+		}else if(Type3 == MenuItemType.about) {
+			MenuItemN2.setText("About");
+		}else if(Type3 == MenuItemType.wiki) {
+			MenuItemN2.setText("Wiki");
+		}else if(Type3 == MenuItemType.Input2) {
+			MenuItemN2.setText("setInput2 = "+Input2);
+			MenuItemN2.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					if(Input2 == 0) {
+						Input2 = 1;
+						MenuItemN2.setText("setInput2 = "+Input2);
+						Events.SetInputs(Input1, Input2, Name);
+					}else {
+						Input2 = 0;
+						MenuItemN2.setText("setInput2 = "+Input2);
+						Events.SetInputs(Input1, Input2, Name);
+					}
+				}
+			});
+		}else {
+			MenuItemN2.setText("Default");
+		}
+		if(Name == "NOT") {
+			MenuButtonN.getItems().addAll(MenuItemN);
+		}else {
+			MenuButtonN.getItems().addAll(MenuItemN,MenuItemN2);
+		}
 		this.menuButton = MenuButtonN;
 	}
 	/**
@@ -281,6 +336,7 @@ public class Buttons {
 	 * @throws FileNotFoundException 
 	 */
 	public void setButton(Buttons button, ButtonType Type) throws FileNotFoundException {
+		// TODO SetButton con Image
 		Button buttonN = new Button();
 		if(Type == ButtonType.And){
 			Images ImageAND = new Images();
@@ -371,12 +427,7 @@ public class Buttons {
 			buttonN.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent event) {
-			        Stage stage = new Stage();
-					Pane Panel = new Pane();
-					stage.setTitle("Work in Progress");
-					stage.setScene(new Scene(Panel, 450, 450));				
-					stage.initModality(Modality.APPLICATION_MODAL);
-					stage.showAndWait();
+			        Events.Window();
 				}
 			});
 		}else {
