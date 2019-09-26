@@ -1,12 +1,15 @@
 package Application;
 
+import java.util.ArrayList;
 import Application.Patron_Factory.LogicType;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToolBar;
@@ -30,8 +33,11 @@ public class Events {
 	private static double PositionSceneX,PositionSceneY;
     private static double PositionTranslateX,PositionTranslateY;
     static Patron_Factory Compuerta = new Patron_Factory();
-    private static ToolBar Toolbar1 = new ToolBar();
-    private static TableView tableView = new TableView();
+    public static ToolBar Toolbar1 = new ToolBar();
+    public static TableView tableView = new TableView();
+    private static int indexPrev = 0;
+    private static String values = new String();
+    private static int combinations;
     /**
      * Metodo para cuando se detecta que un boton esta siendo arrastrado
      * @param e
@@ -84,8 +90,13 @@ public class Events {
 	       rectangle.setId(Name);
 	       System.out.println(Name+" Inputs to 0");
 	       SetInputs(0,0, Name);
-	       AddInputs(Toolbar1, Name);    
-	       AddColumns();
+	       if(Name == "NOT"){
+	    	   Buttons.TotalEntradas++;
+	       }else {
+	    	   Buttons.TotalEntradas++;
+	    	   Buttons.TotalEntradas++;
+	       }
+	       AddInputs(Toolbar1, Name);
 	       Main.Group.getChildren().add(rectangle);
 	       
 	    }
@@ -112,6 +123,7 @@ public class Events {
 		BorderPane Panel = new BorderPane();
 		Panel.setLeft(Toolbar1);
 		Panel.setCenter(tableView);
+		tableView.setPlaceholder(new Label("No hay Compuertas en el Circuito"));
 		Toolbar1.setOrientation(Orientation.VERTICAL);
 		stage.setTitle("Set Inputs | Truth Table ");
 		stage.setScene(new Scene(Panel, 450, 450));				
@@ -125,24 +137,20 @@ public class Events {
 		Input1.setMenuButton(Input1, MenuButtonType.Input, setInput1 , MenuItemType.Input1, setInput2, MenuItemType.Input2 , Name);
 		ToolBar.getItems().add(Input1.getMenuButton());
 	}
-	public static void AddColumns() {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static void AddColumns(TableView TableView) {
 		TableColumn inputsColumn = new TableColumn("Inputs");
-		inputsColumn.setMinWidth(tableView.getMaxWidth()/2);
+		inputsColumn.setMinWidth(TableView.getMaxWidth()/2);
         TableColumn<ObservableList<String>, String> outputColumn = new TableColumn("Outputs");
-        outputColumn.setMinWidth(tableView.getMaxWidth()/2);
-        outputColumn.setCellValueFactory(values -> new ReadOnlyObjectWrapper<>(values.getValue().get(5)));
-        for (int i = 0; i < 5; i++) {
+        outputColumn.setMinWidth(TableView.getMaxWidth()/2);
+        for (int i = 0; i < Buttons.TotalEntradas; i++) {
             final int index = i;
             String name = "int" + i;
             TableColumn<ObservableList<String>, String> newColumn = new TableColumn<>(name);
-            newColumn.setCellValueFactory(values -> new ReadOnlyObjectWrapper<>(values.getValue().get(index)));
-
             inputsColumn.getColumns().add(newColumn);
         }
-        tableView.getColumns().addAll(inputsColumn, outputColumn);
-        
+        TableView.getColumns().addAll(inputsColumn, outputColumn);
 	}
-	
 	/**
 	 * Evento para mover una compuerta en el panel 
 	 */

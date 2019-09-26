@@ -3,11 +3,9 @@ package Application;
 import Compuertas_Logicas.*;
 
 public class Patron_Factory {
-	
 	Patron_Factory Logic_Gate;
 	
 	interface Compuerta extends Compuerta_Default{
-		
 	}	
 	class GateAND implements Compuerta{
 		//TODO GateAND
@@ -321,7 +319,7 @@ public class Patron_Factory {
 			GateXNOR.setOutput(GateXNOR.getInput1(), GateXNOR.getInput2());
 			System.out.println("XNOR OUTPUT = "+GateXNOR.getOutput());
 		}
-		Logic_Gate = logic_Gate;
+		this.Logic_Gate = logic_Gate;
 	}
 	enum LogicType {
 		type_AND,type_OR,type_NOT,type_NAND,type_NOR,type_XOR,type_XNOR

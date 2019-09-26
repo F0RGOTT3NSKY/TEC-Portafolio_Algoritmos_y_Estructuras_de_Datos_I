@@ -19,7 +19,7 @@ import javafx.scene.input.MouseEvent;
  *
  */
 public class Buttons {
-	private static int TotalEntradas = 0;
+	public static int TotalEntradas = 0;
 	private int Input1 = 0;
 	private int Input2 = 0;
 	private Button button;
@@ -67,7 +67,6 @@ public class Buttons {
 		}else if(Type == MenuButtonType.Help){
 			MenuButtonN.setText("Help");
 		}else if(Type == MenuButtonType.Input){
-			TotalEntradas++;
 			MenuButtonN.setText(Name+" Inputs "+TotalEntradas);
 		}else {
 			MenuButtonN.setText("Default");
@@ -357,6 +356,9 @@ public class Buttons {
 	             @Override
 	             public void handle(ActionEvent event) {
 	                 Main.Group.getChildren().clear();
+	                 Events.tableView.getColumns().clear();
+	                 Events.Toolbar1.getItems().clear();
+	                 TotalEntradas = 0;
 	             }
 	         });
 			
@@ -427,7 +429,10 @@ public class Buttons {
 			buttonN.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent event) {
+					Events.tableView.getColumns().clear();
+					Events.AddColumns(Events.tableView);
 			        Events.Window();
+			        
 				}
 			});
 		}else {
