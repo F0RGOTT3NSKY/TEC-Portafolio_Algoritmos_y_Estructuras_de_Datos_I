@@ -10,7 +10,7 @@ public class Patron_Factory {
 		
 	}	
 	class GateAND implements Compuerta{
-		//TODO Gate
+		//TODO GateAND
 		private int Input1;
 		private int Input2;
 		private int Output;
@@ -127,147 +127,155 @@ public class Patron_Factory {
 		}	
 	}
 	class GateNAND implements Compuerta{
+		//TODO GateNAND
+		private int Input1;
+		private int Input2;
+		private int Output;
 		@Override
-		public void setInput1(int entrada) {
-			// TODO Auto-generated method stub
-			
+		public void setInput1(int Input1) {
+			this.Input1 = Input1;
 		}
 
 		@Override
-		public void setInput2(int entrada) {
-			// TODO Auto-generated method stub
-			
+		public void setInput2(int Input2) {
+			this.Input2 = Input2;
 		}
 		@Override
+		public int getOutput() {
+			return Output;
+		}
+
+		@Override
 		public int getInput1() {
-			// TODO Auto-generated method stub
-			return 0;
+			return Input1;
 		}
 
 		@Override
 		public int getInput2() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
-		@Override
-		public int getOutput() {
-			// TODO Auto-generated method stub
-			return 0;
+			return Input2;
 		}
 
 		@Override
 		public void setOutput(int Input1, int Input2) {
-			// TODO Auto-generated method stub
-			
-		}	
+			int Valor = 1;
+			if(Input1 == 1 && Input2 == 1) {
+				Valor = 0;
+			}
+			this.Output = Valor;
+		}
 	}
 	class GateNOR implements Compuerta{
+		//TODO GateNOR
+		private int Input1;
+		private int Input2;
+		private int Output;
 		@Override
-		public void setInput1(int entrada) {
-			// TODO Auto-generated method stub
-			
+		public void setInput1(int Input1) {
+			this.Input1 = Input1;
 		}
 
 		@Override
-		public void setInput2(int entrada) {
-			// TODO Auto-generated method stub
-			
+		public void setInput2(int Input2) {
+			this.Input2 = Input2;
 		}
 		@Override
+		public int getOutput() {
+			return Output;
+		}
+
+		@Override
 		public int getInput1() {
-			// TODO Auto-generated method stub
-			return 0;
+			return Input1;
 		}
 
 		@Override
 		public int getInput2() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
-		@Override
-		public int getOutput() {
-			// TODO Auto-generated method stub
-			return 0;
+			return Input2;
 		}
 
 		@Override
 		public void setOutput(int Input1, int Input2) {
-			// TODO Auto-generated method stub
-			
+			int Valor = 1;
+			if(Input1 == 1 || Input2 == 1) {
+				Valor = 0;
+			}
+			this.Output = Valor;
 		}	
 	}
 	class GateXOR implements Compuerta{
+		//TODO GateXOR
+		private int Input1;
+		private int Input2;
+		private int Output;
 		@Override
-		public void setInput1(int entrada) {
-			// TODO Auto-generated method stub
-			
+		public void setInput1(int Input1) {
+			this.Input1 = Input1;
 		}
 
 		@Override
-		public void setInput2(int entrada) {
-			// TODO Auto-generated method stub
-			
+		public void setInput2(int Input2) {
+			this.Input2 = Input2;
 		}
 		@Override
+		public int getOutput() {
+			return Output;
+		}
+
+		@Override
 		public int getInput1() {
-			// TODO Auto-generated method stub
-			return 0;
+			return Input1;
 		}
 
 		@Override
 		public int getInput2() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
-		@Override
-		public int getOutput() {
-			// TODO Auto-generated method stub
-			return 0;
+			return Input2;
 		}
 
 		@Override
 		public void setOutput(int Input1, int Input2) {
-			// TODO Auto-generated method stub
-			
+			int Valor = 0;
+			if((Input1 == 1 && Input2 == 0) || (Input1 == 0 && Input2 == 1)) {
+				Valor = 1;
+			}
+			this.Output = Valor;
 		}	
 	}
 	class GateXNOR implements Compuerta{
+		//GateXNOR
+		private int Input1;
+		private int Input2;
+		private int Output;
 		@Override
-		public void setInput1(int entrada) {
-			// TODO Auto-generated method stub
-			
+		public void setInput1(int Input1) {
+			this.Input1 = Input1;
 		}
 
 		@Override
-		public void setInput2(int entrada) {
-			// TODO Auto-generated method stub
-			
+		public void setInput2(int Input2) {
+			this.Input2 = Input2;
 		}
 		@Override
+		public int getOutput() {
+			return Output;
+		}
+
+		@Override
 		public int getInput1() {
-			// TODO Auto-generated method stub
-			return 0;
+			return Input1;
 		}
 
 		@Override
 		public int getInput2() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
-		@Override
-		public int getOutput() {
-			// TODO Auto-generated method stub
-			return 0;
+			return Input2;
 		}
 
 		@Override
 		public void setOutput(int Input1, int Input2) {
-			// TODO Auto-generated method stub
-			
+			int Valor = 1;
+			if((Input1 == 1 && Input2 == 0) || (Input1 == 0 && Input2 == 1)) {
+				Valor = 0;
+			}
+			this.Output = Valor;
 		}	
 	}
 	public void setLogic_Gate(Patron_Factory logic_Gate, LogicType Tipo, int Input1 , int Input2){

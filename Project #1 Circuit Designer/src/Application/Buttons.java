@@ -20,8 +20,8 @@ import javafx.scene.input.MouseEvent;
  */
 public class Buttons {
 	private static int TotalEntradas = 0;
-	private static int Input1 = 0;
-	private static int Input2 = 0;
+	private int Input1 = 0;
+	private int Input2 = 0;
 	private Button button;
 	private MenuButton menuButton;
 	/**
