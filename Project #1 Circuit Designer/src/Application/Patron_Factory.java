@@ -2,12 +2,22 @@ package Application;
 
 import Compuertas_Logicas.*;
 /**
- * 
- * @author ADRIAN
- *
+ * Clase Factory para la creación de nuevas compuertas logicas
  */
 public class Patron_Factory {
 	Patron_Factory Logic_Gate;
+	private String Input1 = "";
+	public Patron_Factory() {
+	}
+	public String getInput1() {
+		return Input1;
+	}
+	public void setInput1(String input1) {
+		Input1 = input1;
+	}
+	public Patron_Factory(String Input1) {
+		this.Input1 = Input1;
+	}
 	/**
 	 * Interface para las compuertas que hereda los metodos Getters and Setters de Inputs y Outputs
 	 */

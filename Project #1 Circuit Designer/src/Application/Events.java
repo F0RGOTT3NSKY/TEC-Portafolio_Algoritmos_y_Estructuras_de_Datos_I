@@ -1,6 +1,7 @@
 package Application;
 
 import Application.Patron_Factory.LogicType;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
@@ -10,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToolBar;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
@@ -24,14 +26,15 @@ import javafx.stage.Stage;
 /**
  * Clase usada para organizar los eventos 
  */
+
 public class Events {
 	private static Rectangle rectangle;
 	private static double PositionSceneX,PositionSceneY;
     private static double PositionTranslateX,PositionTranslateY;
     static Patron_Factory Compuerta = new Patron_Factory();
-    public static ToolBar Toolbar1 = new ToolBar();
-    public static TableView tableView = new TableView();
-    private static int indexPrev = 0;
+    public static ToolBar Toolbar1 = new ToolBar(); 
+	public static TableView tableView = new TableView();
+	private static int indexPrev = 0;
     private static String values = new String();
     private static int combinations;
     /**
@@ -130,17 +133,25 @@ public class Events {
 	}
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void AddColumns(TableView TableView) {
-		TableColumn inputsColumn = new TableColumn("Inputs");
-		inputsColumn.setMinWidth(TableView.getMaxWidth()/2);
-        TableColumn<ObservableList<String>, String> outputColumn = new TableColumn("Outputs");
-        outputColumn.setMinWidth(TableView.getMaxWidth()/2);
-        for (int i = 0; i < Buttons.TotalEntradas; i++) {
-            final int index = i;
+		TableView.getItems().clear();
+		TableColumn InputsGroupColumn = new TableColumn("Inputs Column");
+		InputsGroupColumn.setMinWidth(TableView.getMaxWidth()/2);
+		TableColumn OutputsGroupColumn = new TableColumn("Outputs Column");
+		InputsGroupColumn.setMinWidth(TableView.getMaxWidth()/2);
+		for (int i = 0; i < Buttons.TotalEntradas; i++) {
             String name = "Input " + i;
-            TableColumn<ObservableList<String>, String> newColumn = new TableColumn<>(name);
-            inputsColumn.getColumns().add(newColumn);
+            TableColumn<ObservableList<String>, String> InputColumn = new TableColumn<>(name);
+            InputColumn.setCellValueFactory(new PropertyValueFactory<>("Input1"));
+            ObservableList<Object> Datos = FXCollections.observableArrayList();
+            InputsGroupColumn.getColumns().add(InputColumn);
         }
-        TableView.getColumns().addAll(inputsColumn, outputColumn);
+		for(double Counter = Math.pow(2, Buttons.TotalEntradas); Counter>0; Counter--) {
+        	TableView.getItems().add(new Patron_Factory("1"));
+        	System.out.println("1 added");
+        }
+        
+        
+		TableView.getColumns().addAll(InputsGroupColumn, OutputsGroupColumn);
 	}
 	/**
 	 * Evento para mover una compuerta en el panel 
