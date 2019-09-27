@@ -1,8 +1,9 @@
 package Application;
 
+import java.util.ArrayList;
+
 import Application.Patron_Factory.LogicType;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.scene.Cursor;
@@ -138,19 +139,59 @@ public class Events {
 		InputsGroupColumn.setMinWidth(TableView.getMaxWidth()/2);
 		TableColumn OutputsGroupColumn = new TableColumn("Outputs Column");
 		InputsGroupColumn.setMinWidth(TableView.getMaxWidth()/2);
-		for (int i = 0; i < Buttons.TotalEntradas; i++) {
-            String name = "Input " + i;
-            TableColumn<ObservableList<String>, String> InputColumn = new TableColumn<>(name);
-            InputColumn.setCellValueFactory(new PropertyValueFactory<>("Input1"));
-            ObservableList<Object> Datos = FXCollections.observableArrayList();
+		int u = Buttons.TotalEntradas;
+		int temp = u-1;
+		int temp1 = 0;
+		for (int x = 0; x < u; x++) {
+			System.out.println("Entra For");
+			String name = "Input "+x;
+            TableColumn InputColumn = new TableColumn<>(name);
+            String Id = "Input";
+            if(x==0) {
+            	Id += "0";
+            }else if(x==1) {
+            	Id += "1";
+            }else if(x==2) {
+            	Id += "2";
+            }else if(x==3) {
+            	Id += "3";
+            }else if(x==4) {
+            	Id += "4";
+            }else if(x==5) {
+            	Id += "5";
+            }else if(x==6) {
+            	Id += "6";
+            }else if(x==7) {
+            	Id += "7";
+            }else if(x==8) {
+            	Id += "8";
+            }else if(x==9) {
+            	Id += "9";
+            }
+            InputColumn.setCellValueFactory(new PropertyValueFactory<>(Id));
+            System.out.println(Id);
+            ArrayList<String> valuesToAdd = new ArrayList<String>();
+            for(int y = 0; y < Math.pow(2,temp1); y++) {
+            	System.out.println("Entra For2");
+            	for(int w = 0; w < Math.pow(2,temp); w++) {
+            		System.out.println("Entra For3");
+            		valuesToAdd.add("1");
+                	TableView.getItems().add(new TruthTable("1", x));
+                }
+            	for(int z = 0; z < Math.pow(2,temp); z++) {
+            		System.out.println("Entra For4");
+            		valuesToAdd.add("0");
+                	TableView.getItems().add(new TruthTable("0", x));
+            	}
+            	
+            }
+            System.out.println(valuesToAdd);
+            TableView.getItems().add(FXCollections.observableArrayList(valuesToAdd));
+            temp--;
+            temp1++;
+            
             InputsGroupColumn.getColumns().add(InputColumn);
-        }
-		for(double Counter = Math.pow(2, Buttons.TotalEntradas); Counter>0; Counter--) {
-        	TableView.getItems().add(new Patron_Factory("1"));
-        	System.out.println("1 added");
-        }
-        
-        
+        }		
 		TableView.getColumns().addAll(InputsGroupColumn, OutputsGroupColumn);
 	}
 	/**
