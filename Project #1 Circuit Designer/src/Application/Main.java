@@ -12,7 +12,6 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 /**
  *Clase de la ventana principal de la applicacion
  */
@@ -25,13 +24,11 @@ public class Main extends Application{
     public static void main(String[] args) {    	
         launch(args);
     }
-
     /**
 	 * Metodo para iniciar la ventana principal
 	 * @param primaryStage
 	 */
-	public void start(Stage primaryStage) throws Exception {
-		
+	public void start(Stage primaryStage) throws Exception {	
 		Buttons MenuButtonFile = new Buttons();
 		Buttons MenuButtonHelp = new Buttons();
         Buttons boton = new Buttons();
@@ -48,8 +45,7 @@ public class Main extends Application{
         Buttons NANDButton = new Buttons();
         Buttons NORButton = new Buttons();
         Buttons XORButton = new Buttons();
-        Buttons XNORButton = new Buttons();
-        
+        Buttons XNORButton = new Buttons(); 
         Images ImageABOUT = new Images();
         ImageABOUT.setImageView(ImageABOUT,ImageType.About);
         Images ImageADD = new Images();
@@ -66,8 +62,6 @@ public class Main extends Application{
         ImageWIKI.setImageView(ImageWIKI,ImageType.Wiki);       
         Images ImageICON = new Images();
         ImageICON.setImage(ImageICON,ImageType.Icon);
-        
-        
         MenuButtonFile.setMenuButton(MenuButtonFile,MenuButtonType.File,ImageFILE.getImageView(),
         							 MenuItem1,MenuItemType.choice1,ImageADD.getImageView(),
         							 MenuItem2,MenuItemType.choice2,ImageSAVE.getImageView(),
@@ -85,36 +79,28 @@ public class Main extends Application{
         NORButton.setButton(NORButton, ButtonType.Nor);
         XORButton.setButton(XORButton, ButtonType.Exor);
         XNORButton.setButton(XNORButton, ButtonType.Exnor);
-        
-        
-        
-
         ToolBar toolBar1 = new ToolBar();
-        toolBar1.getItems().addAll(MenuButtonFile.getMenuButton(),new Separator(),boton.getButton(),button2.getButton(),button3.getButton(),new Separator(),MenuButtonHelp.getMenuButton());        
+        toolBar1.getItems().addAll(MenuButtonFile.getMenuButton(),new Separator(),boton.getButton(),
+        						   button2.getButton(),button3.getButton(),new Separator(),MenuButtonHelp.getMenuButton());        
         ToolBar toolBar2 = new ToolBar();
         toolBar2.setOrientation(Orientation.VERTICAL);
-        toolBar2.getItems().addAll(new Separator(),ANDButton.getButton(),ORButton.getButton(),NANDButton.getButton(),NORButton.getButton(),NOTButton.getButton(),XORButton.getButton(),XNORButton.getButton(),new Separator());
-        
+        toolBar2.getItems().addAll(new Separator(),ANDButton.getButton(),ORButton.getButton(),
+        						   NANDButton.getButton(),NORButton.getButton(),NOTButton.getButton(),
+        						   XORButton.getButton(),XNORButton.getButton(),new Separator());    
         Pane.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {
                 event.acceptTransferModes(TransferMode.COPY_OR_MOVE); }
         });
-        
-        
         BorderPane pane = new BorderPane();
         pane.setTop(toolBar1);
         pane.setLeft(toolBar2);
         pane.setCenter(Pane);
-        
-        
         Scene scene = new Scene(pane, 1000, 600);
         String FileName = "Nuevo Archivo";
         primaryStage.setScene(scene);
         primaryStage.setTitle("Compuertas Logicas"+" - "+FileName);
         primaryStage.getIcons().add(ImageICON.getImage());
         primaryStage.show();
-	}
-	
-	
+	}	
 }

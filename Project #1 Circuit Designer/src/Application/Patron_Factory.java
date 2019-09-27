@@ -1,10 +1,16 @@
 package Application;
 
 import Compuertas_Logicas.*;
-
+/**
+ * 
+ * @author ADRIAN
+ *
+ */
 public class Patron_Factory {
 	Patron_Factory Logic_Gate;
-	
+	/**
+	 * Interface para las compuertas que hereda los metodos Getters and Setters de Inputs y Outputs
+	 */
 	interface Compuerta extends Compuerta_Default{
 	}	
 	class GateAND implements Compuerta{
@@ -276,6 +282,13 @@ public class Patron_Factory {
 			this.Output = Valor;
 		}	
 	}
+	/**
+	 * Metodo para establecer una compuerta logica según su tipo y sirve tambien para actualizar los valores de los inputs
+	 * @param logic_Gate
+	 * @param Tipo
+	 * @param Input1
+	 * @param Input2
+	 */
 	public void setLogic_Gate(Patron_Factory logic_Gate, LogicType Tipo, int Input1 , int Input2){
 		if(Tipo == LogicType.type_AND) {
 			GateAND GateAND = new GateAND();	
@@ -321,11 +334,16 @@ public class Patron_Factory {
 		}
 		this.Logic_Gate = logic_Gate;
 	}
+	/**
+	 * Enum para delimitar el tipo de LogicType
+	 */
 	enum LogicType {
 		type_AND,type_OR,type_NOT,type_NAND,type_NOR,type_XOR,type_XNOR
 	}
+	/**
+	 * Metodo para obtener la compuerta logica
+	 */
 	public Patron_Factory getLogic_Gate() {
 		return Logic_Gate;
-	}
-	
+	}	
 }

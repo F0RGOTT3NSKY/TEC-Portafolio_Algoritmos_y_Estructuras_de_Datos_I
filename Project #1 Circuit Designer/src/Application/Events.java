@@ -1,9 +1,6 @@
 package Application;
 
-import java.util.ArrayList;
 import Application.Patron_Factory.LogicType;
-import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
@@ -24,7 +21,6 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 /**
  * Clase usada para organizar los eventos 
  */
@@ -67,7 +63,6 @@ public class Events {
 	        double offsetY = t.getSceneY() - PositionSceneY;
 	        double newTranslateX = PositionTranslateX + offsetX;
 	        double newTranslateY = PositionTranslateY + offsetY;
-	
 	        ((Rectangle)(t.getSource())).setTranslateX(newTranslateX);
 	        ((Rectangle)(t.getSource())).setTranslateY(newTranslateY);
 	    }
@@ -76,9 +71,7 @@ public class Events {
 	 * Metodo para agregar las compuertas al panel 
 	 * @param e
 	 * @param ImageView
-	 * @throws Exception 
 	 */
-	
 	public static void OnDragDropped(DragEvent e,ImageView ImageView, String Name) {
 	       rectangle = new Rectangle(140,50);
 	       rectangle.setFill(new ImagePattern(ImageView.getImage()));
@@ -97,8 +90,7 @@ public class Events {
 	    	   Buttons.TotalEntradas++;
 	       }
 	       AddInputs(Toolbar1, Name);
-	       Main.Group.getChildren().add(rectangle);
-	       
+	       Main.Group.getChildren().add(rectangle);  
 	    }
 	public static void SetInputs(int Input1, int Input2 , String Name) {
 		if(Name == "AND") {
@@ -117,7 +109,6 @@ public class Events {
 			Compuerta.setLogic_Gate(Compuerta, LogicType.type_XNOR, Input1, Input2);
 		}
 	}
-	
 	public static void Window() {
 		Stage stage = new Stage();
 		BorderPane Panel = new BorderPane();
@@ -145,7 +136,7 @@ public class Events {
         outputColumn.setMinWidth(TableView.getMaxWidth()/2);
         for (int i = 0; i < Buttons.TotalEntradas; i++) {
             final int index = i;
-            String name = "int" + i;
+            String name = "Input " + i;
             TableColumn<ObservableList<String>, String> newColumn = new TableColumn<>(name);
             inputsColumn.getColumns().add(newColumn);
         }
@@ -162,8 +153,5 @@ public class Events {
                     PositionTranslateX = ((Rectangle)(t.getSource())).getTranslateX();
                     PositionTranslateY = ((Rectangle)(t.getSource())).getTranslateY();
                 }
-            };
-   
+            };  
 }
-
-

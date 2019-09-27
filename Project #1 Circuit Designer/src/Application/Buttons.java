@@ -14,9 +14,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 /**
- * 
- * Clase para la creacion de botones
- *
+ * Clase que funciona para crear nuevos botones
  */
 public class Buttons {
 	public static int TotalEntradas = 0;
@@ -345,8 +343,7 @@ public class Buttons {
 	            @Override
 	            public void handle(MouseEvent event) {
 	                Events.DragDetected(event,ImageAND.getImageView(),"AND");
-	            }});
-			
+	            }});	
 		}else if(Type == ButtonType.Clear){
 			buttonN.setText("Clear");
 			Images ImageCLEAR = new Images();
@@ -360,8 +357,7 @@ public class Buttons {
 	                 Events.Toolbar1.getItems().clear();
 	                 TotalEntradas = 0;
 	             }
-	         });
-			
+	         });	
 		}else if(Type == ButtonType.Delete){
 			buttonN.setText("Delete");
 			Images ImageDELETE = new Images();
@@ -431,8 +427,7 @@ public class Buttons {
 				public void handle(ActionEvent event) {
 					Events.tableView.getColumns().clear();
 					Events.AddColumns(Events.tableView);
-			        Events.Window();
-			        
+			        Events.Window();			        
 				}
 			});
 		}else {
@@ -446,7 +441,4 @@ public class Buttons {
         });
 		this.button = buttonN;
 	}
-
-
-
 }
