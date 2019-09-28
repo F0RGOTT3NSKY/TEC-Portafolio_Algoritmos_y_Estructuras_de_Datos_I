@@ -1,9 +1,11 @@
 package Application;
 
+import java.awt.List;
 import java.util.ArrayList;
 
 import Application.Patron_Factory.LogicType;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.scene.Cursor;
@@ -142,57 +144,70 @@ public class Events {
 		int u = Buttons.TotalEntradas;
 		int temp = u-1;
 		int temp1 = 0;
+		
+		String [][] Values = new String[u][(int) Math.pow(2, u)];
 		for (int x = 0; x < u; x++) {
+			double temp2 = Math.pow(2, u)-1;
 			System.out.println("Entra For");
 			String name = "Input "+x;
-            TableColumn InputColumn = new TableColumn<>(name);
-            String Id = "Input";
-            if(x==0) {
-            	Id += "0";
-            }else if(x==1) {
-            	Id += "1";
-            }else if(x==2) {
-            	Id += "2";
-            }else if(x==3) {
-            	Id += "3";
-            }else if(x==4) {
-            	Id += "4";
-            }else if(x==5) {
-            	Id += "5";
-            }else if(x==6) {
-            	Id += "6";
-            }else if(x==7) {
-            	Id += "7";
-            }else if(x==8) {
-            	Id += "8";
-            }else if(x==9) {
-            	Id += "9";
-            }
-            InputColumn.setCellValueFactory(new PropertyValueFactory<>(Id));
-            System.out.println(Id);
-            ArrayList<String> valuesToAdd = new ArrayList<String>();
+            TableColumn InputColumn = new TableColumn(name);
+            InputColumn.setCellValueFactory(new PropertyValueFactory<>("Input"+x));
             for(int y = 0; y < Math.pow(2,temp1); y++) {
             	System.out.println("Entra For2");
             	for(int w = 0; w < Math.pow(2,temp); w++) {
             		System.out.println("Entra For3");
-            		valuesToAdd.add("1");
-                	TableView.getItems().add(new TruthTable("1", x));
-                }
+            		Values[temp][(int) temp2] = "1";
+            		if(temp2!=0) {
+            			temp2--;
+            		}
+                } 
             	for(int z = 0; z < Math.pow(2,temp); z++) {
             		System.out.println("Entra For4");
-            		valuesToAdd.add("0");
-                	TableView.getItems().add(new TruthTable("0", x));
+            		Values[temp][(int) temp2] = "0";
+            		if(temp2!=0) {
+            			temp2--;
+            		}
             	}
-            	
+                
             }
-            System.out.println(valuesToAdd);
-            TableView.getItems().add(FXCollections.observableArrayList(valuesToAdd));
             temp--;
             temp1++;
-            
             InputsGroupColumn.getColumns().add(InputColumn);
-        }		
+            
+        }
+		for (int j=0; j < Values.length; j++) {
+            for (int h=0; h < Values[j].length; h++) {
+              System.out.println (Values[j][h]);
+            }
+          }
+		int x = 0;
+		for(int y=0;y<Math.pow(2, u);y++) {
+			if(u==0) {
+				System.out.println("No Existen Compuertas");
+			}else if(u==1) {
+				TableView.getItems().add(new TruthTable(Values[x][y],"","","","","","","","",""));
+			}else if(u==2) {
+				TableView.getItems().add(new TruthTable(Values[x][y],Values[x+1][y],"","","","","","","",""));
+			}else if(u==3) {
+				TableView.getItems().add(new TruthTable(Values[x][y],Values[x+1][y],Values[x+2][y],"","","","","","",""));
+			}else if(u==4) {
+				TableView.getItems().add(new TruthTable(Values[x][y],Values[x+1][y],Values[x+2][y],Values[x+3][y],"","","","","",""));
+			}else if(u==5) {
+				TableView.getItems().add(new TruthTable(Values[x][y],Values[x+1][y],Values[x+2][y],Values[x+3][y],Values[x+4][y],"","","","",""));
+			}else if(u==6) {
+				TableView.getItems().add(new TruthTable(Values[x][y],Values[x+1][y],Values[x+2][y],Values[x+3][y],Values[x+4][y],Values[x+5][y],"","","",""));
+			}else if(u==7) {
+				TableView.getItems().add(new TruthTable(Values[x][y],Values[x+1][y],Values[x+2][y],Values[x+3][y],Values[x+4][y],Values[x+5][y],Values[x+6][y],"","",""));
+			}else if(u==8) {
+				TableView.getItems().add(new TruthTable(Values[x][y],Values[x+1][y],Values[x+2][y],Values[x+3][y],Values[x+4][y],Values[x+5][y],Values[x+6][y],Values[x+7][y],"",""));
+			}else if(u==9) {
+				TableView.getItems().add(new TruthTable(Values[x][y],Values[x+1][y],Values[x+2][y],Values[x+3][y],Values[x+4][y],Values[x+5][y],Values[x+6][y],Values[x+7][y],Values[x+8][y],""));
+			}else if(u==10) {
+				TableView.getItems().add(new TruthTable(Values[x][y],Values[x+1][y],Values[x+2][y],Values[x+3][y],Values[x+4][y],Values[x+5][y],Values[x+6][y],Values[x+7][y],Values[x+8][y],Values[x+9][y]));
+			}
+		}
 		TableView.getColumns().addAll(InputsGroupColumn, OutputsGroupColumn);
+		
 	}
 	/**
 	 * Evento para mover una compuerta en el panel 
@@ -207,3 +222,51 @@ public class Events {
                 }
             };  
 }
+/**
+if(x==0) {
+TableView.getItems().add(new TruthTable("1","0","0","0","0","0","0","0","0","0"));
+}else if(x==1) {
+TableView.getItems().add(new TruthTable("","1","","","","","","","",""));
+}else if(x==2) {
+TableView.getItems().add(new TruthTable("","","1","","","","","","",""));
+}else if(x==3) {
+TableView.getItems().add(new TruthTable("","","","1","","","","","",""));
+}else if(x==5) {
+TableView.getItems().add(new TruthTable("","","","","1","","","","",""));
+}else if(x==4) {
+TableView.getItems().add(new TruthTable("","","","","","1","","","",""));
+}else if(x==6) {
+TableView.getItems().add(new TruthTable("","","","","","","1","","",""));
+}else if(x==7) {
+TableView.getItems().add(new TruthTable("","","","","","","","1","",""));
+}else if(x==8) {
+TableView.getItems().add(new TruthTable("","","","","","","","","1",""));
+}else if(x==9) {
+TableView.getItems().add(new TruthTable("","","","","","","","","","1"));
+}
+
+
+
+if(x==0) {
+            			TableView.getItems().add(new TruthTable("0","","","","","","","","",""));
+            		}else if(x==1) {
+            			TableView.getItems().add(new TruthTable("","0","","","","","","","",""));
+            		}else if(x==2) {
+            			TableView.getItems().add(new TruthTable("","","0","","","","","","",""));
+            		}else if(x==3) {
+            			TableView.getItems().add(new TruthTable("","","","0","","","","","",""));
+            		}else if(x==5) {
+            			TableView.getItems().add(new TruthTable("","","","","0","","","","",""));
+            		}else if(x==4) {
+            			TableView.getItems().add(new TruthTable("","","","","","0","","","",""));
+            		}else if(x==6) {
+            			TableView.getItems().add(new TruthTable("","","","","","","0","","",""));
+            		}else if(x==7) {
+            			TableView.getItems().add(new TruthTable("","","","","","","","0","",""));
+            		}else if(x==8) {
+            			TableView.getItems().add(new TruthTable("","","","","","","","","0",""));
+            		}else if(x==9) {
+            			TableView.getItems().add(new TruthTable("","","","","","","","","","0"));
+            		}
+
+*/

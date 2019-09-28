@@ -1,3 +1,4 @@
+/**
 package Application;
 
 import javafx.scene.control.TableColumn;
@@ -18,18 +19,28 @@ public class TruthTable {
 	public TruthTable() {
 		
 	}
-	public TruthTable(String Input0, String Input1, String Input2, String Input3, String Input4,
-					  String Input5, String Input6, String Input7, String Input8, String Input9) {
-		this.Input0 = Input0;
-		this.Input1 = Input1;
-		this.Input2 = Input2;
-		this.Input3 = Input3;
-		this.Input4 = Input4;
-		this.Input5 = Input5;
-		this.Input6 = Input6;
-		this.Input7 = Input7;
-		this.Input8 = Input8;
-		this.Input9 = Input9;
+	public TruthTable(String Input, int num) {
+		if(num == 0) {
+			this.Input0 = Input;
+		}else if(num == 1) {
+			this.Input1 = Input;
+		}else if(num == 2) {
+			this.Input2 = Input;
+		}else if(num == 3) {
+			this.Input3 = Input;
+		}else if(num == 4) {
+			this.Input4 = Input;
+		}else if(num == 5) {
+			this.Input5 = Input;
+		}else if(num == 6) {
+			this.Input6 = Input;
+		}else if(num == 7) {
+			this.Input7 = Input;
+		}else if(num == 8) {
+			this.Input8 = Input;
+		}else if(num == 9) {
+			this.Input9 = Input;
+		}
 	}
 	
 	public String getInput0() {
@@ -94,3 +105,4 @@ public class TruthTable {
 	}
 	
 }
+*/
