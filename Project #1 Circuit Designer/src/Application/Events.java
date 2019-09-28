@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.BorderPane;
@@ -24,7 +25,7 @@ import javafx.stage.Stage;
 /**
  * Clase usada para organizar los eventos 
  */
-
+@SuppressWarnings("rawtypes")
 public class Events {
 	private static Rectangle rectangle;
 	private static double PositionSceneX,PositionSceneY;
@@ -65,6 +66,7 @@ public class Events {
 	        ((Rectangle)(t.getSource())).setTranslateY(newTranslateY);
 	    }
 	};
+
 	/**
 	 * Metodo para agregar las compuertas al panel 
 	 * @param e
@@ -87,7 +89,7 @@ public class Events {
 	    	   Buttons.TotalEntradas++;
 	    	   Buttons.TotalEntradas++;
 	       }
-	       AddInputs(Toolbar1, Name);
+	       AddInputs(Toolbar1, Name, rectangle);
 	       Main.Group.getChildren().add(rectangle);  
 	    }
 	/**
@@ -133,12 +135,31 @@ public class Events {
 	 * @param ToolBar
 	 * @param Name
 	 */
-	public static void AddInputs(ToolBar ToolBar, String Name) {
+	public static void AddInputs(ToolBar ToolBar, String Name, Rectangle rectangle) {
 		Buttons Input1 = new Buttons();
 		Buttons setInput1 = new Buttons();
 		Buttons setInput2 = new Buttons();
 		Input1.setMenuButton(Input1, MenuButtonType.Input, setInput1 , MenuItemType.Input1, setInput2, MenuItemType.Input2 , Name);
 		ToolBar.getItems().add(Input1.getMenuButton());
+		rectangle.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+            @Override public void handle(final MouseEvent MouseEvent){	
+         	   MouseButton button = MouseEvent.getButton();
+		   			if(button==MouseButton.SECONDARY) {
+		   				System.out.println("Clicked");
+		   				Main.Group.getChildren().remove(rectangle);
+		   				if(Name == "NOT") {
+		   					Buttons.TotalEntradas--;
+		   				}else {
+		   					Buttons.TotalEntradas--;
+		   					Buttons.TotalEntradas--;
+		   					
+		   				}
+		   				Toolbar1.getItems().remove(Input1.getMenuButton());
+		   			}
+            }
+        });
+		
 	}
 	/**
 	 * Metodo para agregar las columnas a la tabla de verdad y sus valores de verdad 
@@ -150,7 +171,7 @@ public class Events {
 		TableColumn InputsGroupColumn = new TableColumn("Inputs Column");
 		InputsGroupColumn.setMinWidth(TableView.getMaxWidth()/2);
 		TableColumn OutputsGroupColumn = new TableColumn("Outputs Column");
-		InputsGroupColumn.setMinWidth(TableView.getMaxWidth()/2);
+		OutputsGroupColumn.setMinWidth(TableView.getMaxWidth()/2);
 		int u = Buttons.TotalEntradas;
 		int temp = u-1;
 		int temp1 = 0;

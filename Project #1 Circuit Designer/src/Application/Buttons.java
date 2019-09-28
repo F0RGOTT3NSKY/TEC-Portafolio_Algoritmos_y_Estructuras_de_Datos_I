@@ -365,6 +365,16 @@ public class Buttons {
 			Images ImageDELETE = new Images();
 	        ImageDELETE.setImageView(ImageDELETE,ImageType.Delete);
 			buttonN.setGraphic(ImageDELETE.getImageView());
+			buttonN.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Information Dialog");
+					alert.setHeaderText("Borrar una compuerta:");
+					alert.setContentText("Tip: Puedes borrar una compuerta haciendo click derecho sobre la compuerta deseada.");
+					alert.showAndWait();
+				}
+			});
 		}else if(Type == ButtonType.Exnor){
 			Images ImageEXNOR = new Images();
 	        ImageEXNOR.setImageView(ImageEXNOR,ImageType.Exnor);
@@ -431,7 +441,13 @@ public class Buttons {
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setTitle("Information Dialog");
 						alert.setHeaderText("No hay compuertas en el circuito!");
-						alert.setContentText("Tip: Puedes arrastrar los botones de la derecha para agregar nuevas compuertas al cicuito");
+						alert.setContentText("Tip: Puedes arrastrar los botones de la derecha para agregar nuevas compuertas al cicuito.");
+						alert.showAndWait();
+					}else if(TotalEntradas>10){
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Information Dialog");
+						alert.setHeaderText("No se pueden existir mas de 10 Entradas en el circuito!");
+						alert.setContentText("Tip: Puedes conectar las salidas de las compuertas con las entradas de otras compuertas para realizar un circuito.");
 						alert.showAndWait();
 					}else {
 						Events.tableView.getColumns().clear();
