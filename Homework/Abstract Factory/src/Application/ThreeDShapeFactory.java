@@ -1,7 +1,6 @@
 package Application;
-
 /**
- * Concrete factory
+ * Factory para crear objetos
  */
 public class ThreeDShapeFactory extends AbstractFactory {
     @Override

@@ -1,5 +1,7 @@
 package Application;
-
+/**
+ * Factory para crear objetos 
+ */
 public class TwoDShapeFactory extends AbstractFactory {
     @Override
     GeometricShape getShape(ShapeType name) {

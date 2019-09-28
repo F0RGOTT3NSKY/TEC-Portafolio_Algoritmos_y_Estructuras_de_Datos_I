@@ -1,7 +1,6 @@
 package Application;
-
 /**
- * Factory provider
+ * Clase que se usa como intermediaria para crear el objeto deseado
  */
 public class FactoryProvider {
     public static AbstractFactory getFactory(FactoryType factoryType) {

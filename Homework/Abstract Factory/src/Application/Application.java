@@ -1,6 +1,6 @@
 package Application;
 /**
- * Client
+ * Ejemplo de como crear una figura mediante Abstract Factory
  */
 public class Application {
     public static void main(String[] args) {
