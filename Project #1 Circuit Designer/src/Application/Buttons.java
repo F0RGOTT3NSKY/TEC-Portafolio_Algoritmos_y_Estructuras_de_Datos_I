@@ -8,6 +8,8 @@ import java.net.URISyntaxException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -425,9 +427,18 @@ public class Buttons {
 			buttonN.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent event) {
-					Events.tableView.getColumns().clear();
-					Events.AddColumns(Events.tableView);
-			        Events.Window();			        
+					if(TotalEntradas==0) {
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Information Dialog");
+						alert.setHeaderText("No hay compuertas en el circuito!");
+						alert.setContentText("Tip: Puedes arrastrar los botones de la derecha para agregar nuevas compuertas al cicuito");
+						alert.showAndWait();
+					}else {
+						Events.tableView.getColumns().clear();
+						Events.AddColumns(Events.tableView);
+				        Events.Window();
+					}
+								        
 				}
 			});
 		}else {

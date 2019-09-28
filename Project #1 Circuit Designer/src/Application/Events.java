@@ -1,11 +1,6 @@
 package Application;
 
-import java.awt.List;
-import java.util.ArrayList;
-
 import Application.Patron_Factory.LogicType;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.scene.Cursor;
@@ -37,9 +32,6 @@ public class Events {
     static Patron_Factory Compuerta = new Patron_Factory();
     public static ToolBar Toolbar1 = new ToolBar(); 
 	public static TableView tableView = new TableView();
-	private static int indexPrev = 0;
-    private static String values = new String();
-    private static int combinations;
     /**
      * Metodo para cuando se detecta que un boton esta siendo arrastrado
      * @param e
@@ -98,6 +90,12 @@ public class Events {
 	       AddInputs(Toolbar1, Name);
 	       Main.Group.getChildren().add(rectangle);  
 	    }
+	/**
+	 * Metodo para establecer los inputs de cada compuerta
+	 * @param Input1
+	 * @param Input2
+	 * @param Name
+	 */
 	public static void SetInputs(int Input1, int Input2 , String Name) {
 		if(Name == "AND") {
 			Compuerta.setLogic_Gate(Compuerta, LogicType.type_AND, Input1, Input2);
@@ -115,6 +113,9 @@ public class Events {
 			Compuerta.setLogic_Gate(Compuerta, LogicType.type_XNOR, Input1, Input2);
 		}
 	}
+	/**
+	 * Metodo que crea una nueva ventana en la que se muestra un toolbar con botones para editar los inputs, y ademas se muestra la tabla de verdad del circuito
+	 */
 	public static void Window() {
 		Stage stage = new Stage();
 		BorderPane Panel = new BorderPane();
@@ -127,6 +128,11 @@ public class Events {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.showAndWait();
 	}
+	/**
+	 * Metodo para crear un MenuButton para editar los inputs de cada compuerta
+	 * @param ToolBar
+	 * @param Name
+	 */
 	public static void AddInputs(ToolBar ToolBar, String Name) {
 		Buttons Input1 = new Buttons();
 		Buttons setInput1 = new Buttons();
@@ -134,6 +140,10 @@ public class Events {
 		Input1.setMenuButton(Input1, MenuButtonType.Input, setInput1 , MenuItemType.Input1, setInput2, MenuItemType.Input2 , Name);
 		ToolBar.getItems().add(Input1.getMenuButton());
 	}
+	/**
+	 * Metodo para agregar las columnas a la tabla de verdad y sus valores de verdad 
+	 * @param TableView
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void AddColumns(TableView TableView) {
 		TableView.getItems().clear();
