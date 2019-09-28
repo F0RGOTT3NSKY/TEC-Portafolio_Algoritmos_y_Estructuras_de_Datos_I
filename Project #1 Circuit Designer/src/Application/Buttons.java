@@ -15,6 +15,8 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 /**
  * Clase que funciona para crear nuevos botones
  */
@@ -246,8 +248,9 @@ public class Buttons {
 	public void setMenuButton(Buttons menuButton, MenuButtonType Type,ImageView ImageView,
 							  Buttons menuItem, MenuItemType Type2,ImageView ImageView2, 
 							  Buttons menuItem2, MenuItemType Type3,ImageView ImageView3,
-							  Buttons menuItem3, MenuItemType Type4,ImageView ImageView4) {
+							  Buttons menuItem3, MenuItemType Type4,ImageView ImageView4,Stage PrimaryStage) {
 		MenuButton MenuButtonN = new MenuButton();
+		Stage Stage = new Stage();
 		if(Type == MenuButtonType.File){
 			MenuButtonN.setText("File");
 			MenuButtonN.setGraphic(ImageView);
@@ -261,6 +264,11 @@ public class Buttons {
 		if(Type2 == MenuItemType.choice1) {
 			MenuItemN.setText("Open Project");
 			MenuItemN.setGraphic(ImageView2);
+			MenuItemN.setOnAction(event -> {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Choose a Logical Gates Diagram to open");
+                fileChooser.showOpenDialog(Stage);
+            });
 		}else if(Type2 == MenuItemType.choice2) {
 			MenuItemN.setText("Save Project");
 			MenuItemN.setGraphic(ImageView2);

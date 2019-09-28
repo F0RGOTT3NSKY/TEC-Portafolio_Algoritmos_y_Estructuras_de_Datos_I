@@ -65,7 +65,7 @@ public class Main extends Application{
         MenuButtonFile.setMenuButton(MenuButtonFile,MenuButtonType.File,ImageFILE.getImageView(),
         							 MenuItem1,MenuItemType.choice1,ImageADD.getImageView(),
         							 MenuItem2,MenuItemType.choice2,ImageSAVE.getImageView(),
-        							 MenuItem3,MenuItemType.choice3,ImageEXITSAVE.getImageView());
+        							 MenuItem3,MenuItemType.choice3,ImageEXITSAVE.getImageView(),primaryStage);
         boton.setButton(boton,ButtonType.Run);
         button2.setButton(button2,ButtonType.Delete);
         button3.setButton(button3,ButtonType.Clear);
